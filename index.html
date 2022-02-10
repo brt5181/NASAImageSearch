@@ -28,14 +28,14 @@
 </head>
 
 <body>
-  <h1>Hello Worlds tags</h1>
+  <!-- <h1>Hello Worlds tags</h1>
   <hello-world name="cool"></hello-world>
   <hello-world name="Jeb"><p>Please clap..</p></hello-world>
   <hello-world name="partner"></hello-world>
   <script type="module">
     import "./src/HelloWorld.js";
   </script>
-  <h1>IP look up</h1>
+  <h2>IP look up</h2>
   <user-ip></user-ip>
   <user-ip ip="24.48.0.1"></user-ip>
   <script type="module">
@@ -48,12 +48,12 @@
       console.log(await getIPClass.updateUserIP());
     }, 100);
   </script>
-  <h1>Location based on IP address as a map</h1>
+  <h3>Location based on IP address as a map</h3>
   <location-from-ip></location-from-ip>
   <script type="module">
     import "./src/LocationFromIP.js";
   </script>
-  <h1>Example event binding</h1>
+  <h4>Example event binding</h4>
   <script type="module">
     import {html, render} from "lit";
 
@@ -63,10 +63,10 @@
     }
     render(html`<button @click="${addIpTag}">Call the IP API</button>`, document.querySelector("#demo"));
   </script>
-  <div id="demo"></div>
+  <div id="demo"></div> -->
   <h1>Nasa Image Search</h1>
   <script type="module">
-    import "./src/Option1Nasa.js"
+    import "./src/NasaImageSearch.js"
     </script>
 <image-search></image-search>
 </body>
