@@ -8,7 +8,9 @@ class imageSearch extends LitElement {
     this.image = [];
     this.title = [];
     this.description = [];
-    this.secondary_creator = '';
+    this.secondary_creator = "";
+    this.page = 1;
+    // this.media_type = "";
   }
 
   static get properties() {
@@ -17,7 +19,8 @@ class imageSearch extends LitElement {
       title: {type: Array},
       description: {type: Array},
       secondary_creator: {type: String},
-      term: {type: String}
+      term: {type: String},
+      page: {type: Number}
     };
   }
 
@@ -33,16 +36,24 @@ class imageSearch extends LitElement {
       if (propName === 'term' && this[propName]) {
         this.getData();
       }
-      else if (propName === 'image')
-      {
-        this.render();
+      else if (propName === 'page' && this[propName]) {
+        this.getData();
       }
     });
   }
 
   async getData() {
     // special JS capability to resolve a URL path relative to the current file
-    const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image`);
+    // if (this.page === null)
+    // {
+    //   const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image`);
+    // }
+    // else if {
+    //   const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image&page=${this.page}`);
+    // }
+
+    const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image&page=${this.page}`);
+
     // go get our data from the file
     await fetch(file) // sends an HTTP get request to the URL
       .then(response =>
@@ -65,6 +76,7 @@ class imageSearch extends LitElement {
             title: data.collection.items[i].data[0].title,
             description: data.collection.items[i].data[0].description,
             secondary_creator: data.collection.items[i].data[0].secondary_creator,
+            page: data.collection.items[i].data[0].page
           };
           // brute force; just pull what looks like a date off the front for 01-31-22 format
           
@@ -98,10 +110,17 @@ class imageSearch extends LitElement {
   updateSearchTerm()
   {
     this.term = this.shadowRoot.querySelector('#term').value;
+    this.page = this.shadowRoot.querySelector('#page').value;
   }
 
   render() {
     return html`
+     <label for="term">Search for image:</label><br> 
+          <input type="text" id="term" name="term"><br>
+          <label for="page"> Enter Page Number</label><br>
+          <input type="number" id="page" name="page"><br>
+          <button @click=${this.updateSearchTerm}>Submit</button>
+          
       ${this.view === 'list'
         ? html`
             <ul>
@@ -115,9 +134,6 @@ class imageSearch extends LitElement {
             </ul>
           `
         : html`
-          <label for="term">Search for image:</label><br> 
-          <input type="text" id="term" name="term"><br>
-          <button @click=${this.updateSearchTerm}>Submit</button>
           <br> </br>
             ${this.image.map(
               item => html`
