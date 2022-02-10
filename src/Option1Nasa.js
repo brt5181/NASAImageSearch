@@ -44,16 +44,13 @@ class imageSearch extends LitElement {
 
   async getData() {
     // special JS capability to resolve a URL path relative to the current file
-    // if (this.page === null)
-    // {
-    //   const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image`);
-    // }
-    // else if {
-    //   const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image&page=${this.page}`);
-    // }
+    let file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image`);
 
-    const file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image&page=${this.page}`);
+    if (this.page !== '')
+    {
+      file = new URL(`https://images-api.nasa.gov/search?q=${this.term}&media_type=image&page=${this.page}`);
 
+    }
     // go get our data from the file
     await fetch(file) // sends an HTTP get request to the URL
       .then(response =>
@@ -111,6 +108,7 @@ class imageSearch extends LitElement {
   {
     this.term = this.shadowRoot.querySelector('#term').value;
     this.page = this.shadowRoot.querySelector('#page').value;
+    console.log(this.page)
   }
 
   render() {
