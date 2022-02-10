@@ -1,0 +1,37 @@
+[
+    {
+        "location":"Westgate Building E203",
+        "start_time": "2022-01-24T12:20",
+		"end_time": "2022-01-24T13:10",
+		"details": " IST 432 - Legal and Regulatory Environment of Information Science and Technology",
+		"num_order": 1
+    },
+    {
+        "location":"Earth and Engineering Sciences Building Room 120",
+        "start_time": "2022-01-24T13:25",
+		"end_time": "2022-01-24T14:15",
+		"details": "ENG 202C - Technical Writing",
+		"num_order": 2
+    },
+    {
+        "location":"Wartik Lab Room 108",
+        "start_time": "2022-01-25T12:05",
+		"end_time": "2022-01-24T13:20",
+		"details": "IST402 - Micro frontend web development",
+		"num_order": 3
+    },
+    {
+        "location":"Westgate Building E203",
+        "start_time": "2022-01-25T13:35",
+		"end_time": "2022-01-24T14:50",
+		"details": "IST 451 - Network Security",
+		"num_order": 4
+    },
+    {
+        "location":"Thomas 100",
+        "start_time": "2022-01-25T15:00",
+		"end_time": "2022-01-24T16:15",
+		"details": "CAS 100 - Speech and Communication",
+		"num_order": 5
+    }
+    ]
